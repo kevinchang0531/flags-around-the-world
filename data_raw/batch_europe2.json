@@ -1,0 +1,220 @@
+[
+{
+"id": "hr",
+"en": "Croatia",
+"subregion": "Southeast Europe",
+"capital_en": "Zagreb",
+"languages_en": [
+"Croatian"
+]
+},
+{
+"id": "xk",
+"en": "Kosovo",
+"subregion": "Southeast Europe",
+"capital_en": "Pristina",
+"languages_en": [
+"Albanian",
+"Serbian"
+]
+},
+{
+"id": "me",
+"en": "Montenegro",
+"subregion": "Southeast Europe",
+"capital_en": "Podgorica",
+"languages_en": [
+"Montenegrin"
+]
+},
+{
+"id": "mk",
+"en": "North Macedonia",
+"subregion": "Southeast Europe",
+"capital_en": "Skopje",
+"languages_en": [
+"Macedonian"
+]
+},
+{
+"id": "ro",
+"en": "Romania",
+"subregion": "Southeast Europe",
+"capital_en": "Bucharest",
+"languages_en": [
+"Romanian"
+]
+},
+{
+"id": "rs",
+"en": "Serbia",
+"subregion": "Southeast Europe",
+"capital_en": "Belgrade",
+"languages_en": [
+"Serbian"
+]
+},
+{
+"id": "ad",
+"en": "Andorra",
+"subregion": "Southern Europe",
+"capital_en": "Andorra la Vella",
+"languages_en": [
+"Catalan"
+]
+},
+{
+"id": "cy",
+"en": "Cyprus",
+"subregion": "Southern Europe",
+"capital_en": "Nicosia",
+"languages_en": [
+"Greek",
+"Turkish"
+]
+},
+{
+"id": "gr",
+"en": "Greece",
+"subregion": "Southern Europe",
+"capital_en": "Athens",
+"languages_en": [
+"Greek"
+]
+},
+{
+"id": "it",
+"en": "Italy",
+"subregion": "Southern Europe",
+"capital_en": "Rome",
+"languages_en": [
+"Italian"
+]
+},
+{
+"id": "mt",
+"en": "Malta",
+"subregion": "Southern Europe",
+"capital_en": "Valletta",
+"languages_en": [
+"English",
+"Maltese"
+]
+},
+{
+"id": "pt",
+"en": "Portugal",
+"subregion": "Southern Europe",
+"capital_en": "Lisbon",
+"languages_en": [
+"Portuguese"
+]
+},
+{
+"id": "sm",
+"en": "San Marino",
+"subregion": "Southern Europe",
+"capital_en": "City of San Marino",
+"languages_en": [
+"Italian"
+]
+},
+{
+"id": "es",
+"en": "Spain",
+"subregion": "Southern Europe",
+"capital_en": "Madrid",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "va",
+"en": "Vatican City",
+"subregion": "Southern Europe",
+"capital_en": "Vatican City",
+"languages_en": [
+"Italian",
+"Latin"
+]
+},
+{
+"id": "be",
+"en": "Belgium",
+"subregion": "Western Europe",
+"capital_en": "Brussels",
+"languages_en": [
+"German",
+"French",
+"Dutch"
+]
+},
+{
+"id": "fr",
+"en": "France",
+"subregion": "Western Europe",
+"capital_en": "Paris",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "de",
+"en": "Germany",
+"subregion": "Western Europe",
+"capital_en": "Berlin",
+"languages_en": [
+"German"
+]
+},
+{
+"id": "li",
+"en": "Liechtenstein",
+"subregion": "Western Europe",
+"capital_en": "Vaduz",
+"languages_en": [
+"German"
+]
+},
+{
+"id": "lu",
+"en": "Luxembourg",
+"subregion": "Western Europe",
+"capital_en": "Luxembourg",
+"languages_en": [
+"German",
+"French",
+"Luxembourgish"
+]
+},
+{
+"id": "mc",
+"en": "Monaco",
+"subregion": "Western Europe",
+"capital_en": "Monaco",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "nl",
+"en": "Netherlands",
+"subregion": "Western Europe",
+"capital_en": "Amsterdam",
+"languages_en": [
+"Dutch"
+]
+},
+{
+"id": "ch",
+"en": "Switzerland",
+"subregion": "Western Europe",
+"capital_en": "Bern",
+"languages_en": [
+"French",
+"Swiss German",
+"Italian",
+"Romansh"
+]
+}
+]

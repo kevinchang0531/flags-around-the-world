@@ -1,0 +1,231 @@
+[
+{
+"id": "kz",
+"en": "Kazakhstan",
+"subregion": "Central Asia",
+"capital_en": "Astana",
+"languages_en": [
+"Kazakh",
+"Russian"
+]
+},
+{
+"id": "kg",
+"en": "Kyrgyzstan",
+"subregion": "Central Asia",
+"capital_en": "Bishkek",
+"languages_en": [
+"Kyrgyz",
+"Russian"
+]
+},
+{
+"id": "tj",
+"en": "Tajikistan",
+"subregion": "Central Asia",
+"capital_en": "Dushanbe",
+"languages_en": [
+"Russian",
+"Tajik"
+]
+},
+{
+"id": "tm",
+"en": "Turkmenistan",
+"subregion": "Central Asia",
+"capital_en": "Ashgabat",
+"languages_en": [
+"Russian",
+"Turkmen"
+]
+},
+{
+"id": "uz",
+"en": "Uzbekistan",
+"subregion": "Central Asia",
+"capital_en": "Tashkent",
+"languages_en": [
+"Russian",
+"Uzbek"
+]
+},
+{
+"id": "cn",
+"en": "China",
+"subregion": "Eastern Asia",
+"capital_en": "Beijing",
+"languages_en": [
+"Chinese"
+]
+},
+{
+"id": "jp",
+"en": "Japan",
+"subregion": "Eastern Asia",
+"capital_en": "Tokyo",
+"languages_en": [
+"Japanese"
+]
+},
+{
+"id": "mn",
+"en": "Mongolia",
+"subregion": "Eastern Asia",
+"capital_en": "Ulan Bator",
+"languages_en": [
+"Mongolian"
+]
+},
+{
+"id": "kp",
+"en": "North Korea",
+"subregion": "Eastern Asia",
+"capital_en": "Pyongyang",
+"languages_en": [
+"Korean"
+]
+},
+{
+"id": "kr",
+"en": "South Korea",
+"subregion": "Eastern Asia",
+"capital_en": "Seoul",
+"languages_en": [
+"Korean"
+]
+},
+{
+"id": "tw",
+"en": "Taiwan",
+"subregion": "Eastern Asia",
+"capital_en": "Taipei",
+"languages_en": [
+"Chinese"
+]
+},
+{
+"id": "bn",
+"en": "Brunei",
+"subregion": "South-Eastern Asia",
+"capital_en": "Bandar Seri Begawan",
+"languages_en": [
+"Malay"
+]
+},
+{
+"id": "kh",
+"en": "Cambodia",
+"subregion": "South-Eastern Asia",
+"capital_en": "Phnom Penh",
+"languages_en": [
+"Khmer"
+]
+},
+{
+"id": "id",
+"en": "Indonesia",
+"subregion": "South-Eastern Asia",
+"capital_en": "Jakarta",
+"languages_en": [
+"Indonesian"
+]
+},
+{
+"id": "la",
+"en": "Laos",
+"subregion": "South-Eastern Asia",
+"capital_en": "Vientiane",
+"languages_en": [
+"Lao"
+]
+},
+{
+"id": "my",
+"en": "Malaysia",
+"subregion": "South-Eastern Asia",
+"capital_en": "Kuala Lumpur",
+"languages_en": [
+"English",
+"Malay"
+]
+},
+{
+"id": "mm",
+"en": "Myanmar",
+"subregion": "South-Eastern Asia",
+"capital_en": "Naypyidaw",
+"languages_en": [
+"Burmese"
+]
+},
+{
+"id": "ph",
+"en": "Philippines",
+"subregion": "South-Eastern Asia",
+"capital_en": "Manila",
+"languages_en": [
+"English",
+"Filipino"
+]
+},
+{
+"id": "sg",
+"en": "Singapore",
+"subregion": "South-Eastern Asia",
+"capital_en": "Singapore",
+"languages_en": [
+"English",
+"Malay",
+"Tamil",
+"Chinese"
+]
+},
+{
+"id": "th",
+"en": "Thailand",
+"subregion": "South-Eastern Asia",
+"capital_en": "Bangkok",
+"languages_en": [
+"Thai"
+]
+},
+{
+"id": "tl",
+"en": "Timor-Leste",
+"subregion": "South-Eastern Asia",
+"capital_en": "Dili",
+"languages_en": [
+"Portuguese",
+"Tetum"
+]
+},
+{
+"id": "vn",
+"en": "Vietnam",
+"subregion": "South-Eastern Asia",
+"capital_en": "Hanoi",
+"languages_en": [
+"Vietnamese"
+]
+},
+{
+"id": "af",
+"en": "Afghanistan",
+"subregion": "Southern Asia",
+"capital_en": "Kabul",
+"languages_en": [
+"Dari",
+"Pashto",
+"Turkmen"
+]
+},
+{
+"id": "bd",
+"en": "Bangladesh",
+"subregion": "Southern Asia",
+"capital_en": "Dhaka",
+"languages_en": [
+"Bengali"
+]
+}
+]

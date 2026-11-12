@@ -1,0 +1,269 @@
+[
+{
+"id": "dz",
+"en": "Algeria",
+"subregion": "Northern Africa",
+"capital_en": "Algiers",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "eg",
+"en": "Egypt",
+"subregion": "Northern Africa",
+"capital_en": "Cairo",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ly",
+"en": "Libya",
+"subregion": "Northern Africa",
+"capital_en": "Tripoli",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ma",
+"en": "Morocco",
+"subregion": "Northern Africa",
+"capital_en": "Rabat",
+"languages_en": [
+"Arabic",
+"Berber"
+]
+},
+{
+"id": "sd",
+"en": "Sudan",
+"subregion": "Northern Africa",
+"capital_en": "Khartoum",
+"languages_en": [
+"Arabic",
+"English"
+]
+},
+{
+"id": "tn",
+"en": "Tunisia",
+"subregion": "Northern Africa",
+"capital_en": "Tunis",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "bw",
+"en": "Botswana",
+"subregion": "Southern Africa",
+"capital_en": "Gaborone",
+"languages_en": [
+"English",
+"Tswana"
+]
+},
+{
+"id": "sz",
+"en": "Eswatini",
+"subregion": "Southern Africa",
+"capital_en": "Lobamba",
+"languages_en": [
+"English",
+"Swazi"
+]
+},
+{
+"id": "ls",
+"en": "Lesotho",
+"subregion": "Southern Africa",
+"capital_en": "Maseru",
+"languages_en": [
+"English",
+"Sotho"
+]
+},
+{
+"id": "na",
+"en": "Namibia",
+"subregion": "Southern Africa",
+"capital_en": "Windhoek",
+"languages_en": [
+"Afrikaans",
+"German",
+"English",
+"Herero",
+"Khoekhoe",
+"Kwangali",
+"Lozi",
+"Ndonga",
+"Tswana"
+]
+},
+{
+"id": "za",
+"en": "South Africa",
+"subregion": "Southern Africa",
+"capital_en": "Pretoria",
+"languages_en": [
+"Afrikaans",
+"English",
+"Southern Ndebele",
+"Northern Sotho",
+"Southern Sotho",
+"Swazi",
+"Tswana",
+"Tsonga",
+"Venda",
+"Xhosa",
+"Zulu"
+]
+},
+{
+"id": "bj",
+"en": "Benin",
+"subregion": "Western Africa",
+"capital_en": "Porto-Novo",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "bf",
+"en": "Burkina Faso",
+"subregion": "Western Africa",
+"capital_en": "Ouagadougou",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "cv",
+"en": "Cape Verde",
+"subregion": "Western Africa",
+"capital_en": "Praia",
+"languages_en": [
+"Portuguese"
+]
+},
+{
+"id": "gm",
+"en": "Gambia",
+"subregion": "Western Africa",
+"capital_en": "Banjul",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "gh",
+"en": "Ghana",
+"subregion": "Western Africa",
+"capital_en": "Accra",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "gn",
+"en": "Guinea",
+"subregion": "Western Africa",
+"capital_en": "Conakry",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "gw",
+"en": "Guinea-Bissau",
+"subregion": "Western Africa",
+"capital_en": "Bissau",
+"languages_en": [
+"Portuguese",
+"Upper Guinea Creole"
+]
+},
+{
+"id": "ci",
+"en": "Ivory Coast",
+"subregion": "Western Africa",
+"capital_en": "Yamoussoukro",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "lr",
+"en": "Liberia",
+"subregion": "Western Africa",
+"capital_en": "Monrovia",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "ml",
+"en": "Mali",
+"subregion": "Western Africa",
+"capital_en": "Bamako",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "mr",
+"en": "Mauritania",
+"subregion": "Western Africa",
+"capital_en": "Nouakchott",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ne",
+"en": "Niger",
+"subregion": "Western Africa",
+"capital_en": "Niamey",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "ng",
+"en": "Nigeria",
+"subregion": "Western Africa",
+"capital_en": "Abuja",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "sn",
+"en": "Senegal",
+"subregion": "Western Africa",
+"capital_en": "Dakar",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "sl",
+"en": "Sierra Leone",
+"subregion": "Western Africa",
+"capital_en": "Freetown",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "tg",
+"en": "Togo",
+"subregion": "Western Africa",
+"capital_en": "Lomé",
+"languages_en": [
+"French"
+]
+}
+]

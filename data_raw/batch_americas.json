@@ -1,0 +1,236 @@
+[
+{
+"id": "ag",
+"en": "Antigua and Barbuda",
+"subregion": "Caribbean",
+"capital_en": "Saint John's",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "bs",
+"en": "Bahamas",
+"subregion": "Caribbean",
+"capital_en": "Nassau",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "bb",
+"en": "Barbados",
+"subregion": "Caribbean",
+"capital_en": "Bridgetown",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "cu",
+"en": "Cuba",
+"subregion": "Caribbean",
+"capital_en": "Havana",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "dm",
+"en": "Dominica",
+"subregion": "Caribbean",
+"capital_en": "Roseau",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "do",
+"en": "Dominican Republic",
+"subregion": "Caribbean",
+"capital_en": "Santo Domingo",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "gd",
+"en": "Grenada",
+"subregion": "Caribbean",
+"capital_en": "St. George's",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "ht",
+"en": "Haiti",
+"subregion": "Caribbean",
+"capital_en": "Port-au-Prince",
+"languages_en": [
+"French",
+"Haitian Creole"
+]
+},
+{
+"id": "jm",
+"en": "Jamaica",
+"subregion": "Caribbean",
+"capital_en": "Kingston",
+"languages_en": [
+"English",
+"Jamaican Patois"
+]
+},
+{
+"id": "kn",
+"en": "Saint Kitts and Nevis",
+"subregion": "Caribbean",
+"capital_en": "Basseterre",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "lc",
+"en": "Saint Lucia",
+"subregion": "Caribbean",
+"capital_en": "Castries",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "vc",
+"en": "Saint Vincent and the Grenadines",
+"subregion": "Caribbean",
+"capital_en": "Kingstown",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "tt",
+"en": "Trinidad and Tobago",
+"subregion": "Caribbean",
+"capital_en": "Port of Spain",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "bz",
+"en": "Belize",
+"subregion": "Central America",
+"capital_en": "Belmopan",
+"languages_en": [
+"Belizean Creole",
+"English",
+"Spanish"
+]
+},
+{
+"id": "cr",
+"en": "Costa Rica",
+"subregion": "Central America",
+"capital_en": "San José",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "sv",
+"en": "El Salvador",
+"subregion": "Central America",
+"capital_en": "San Salvador",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "gt",
+"en": "Guatemala",
+"subregion": "Central America",
+"capital_en": "Guatemala City",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "hn",
+"en": "Honduras",
+"subregion": "Central America",
+"capital_en": "Tegucigalpa",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "ni",
+"en": "Nicaragua",
+"subregion": "Central America",
+"capital_en": "Managua",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "pa",
+"en": "Panama",
+"subregion": "Central America",
+"capital_en": "Panama City",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "ca",
+"en": "Canada",
+"subregion": "North America",
+"capital_en": "Ottawa",
+"languages_en": [
+"English",
+"French"
+]
+},
+{
+"id": "mx",
+"en": "Mexico",
+"subregion": "North America",
+"capital_en": "Mexico City",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "us",
+"en": "United States",
+"subregion": "North America",
+"capital_en": "Washington D.C.",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "ar",
+"en": "Argentina",
+"subregion": "South America",
+"capital_en": "Buenos Aires",
+"languages_en": [
+"Guaraní",
+"Spanish"
+]
+},
+{
+"id": "bo",
+"en": "Bolivia",
+"subregion": "South America",
+"capital_en": "Sucre",
+"languages_en": [
+"Aymara",
+"Guaraní",
+"Quechua",
+"Spanish"
+]
+}
+]

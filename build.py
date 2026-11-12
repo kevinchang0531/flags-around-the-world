@@ -33,7 +33,14 @@ html = (html.replace("__FLAGS__", json.dumps(flags))
             .replace("__MAP__", jpeg_uri(os.path.join(DL, "worldmap.jpg"), 1280))
             .replace("__COVER__", jpeg_uri(cover, 1400))
             .replace("__ENDING__", jpeg_uri(ending, 1400)))
-out = os.path.join(ROOT, "index.html")
+out = os.path.join(ROOT, "lesson.html")
 with open(out, "w", encoding="utf-8") as f:
     f.write(html)
 print(out, round(os.path.getsize(out) / 1024), "KB")
+
+# 首頁：放封面縮圖與國家數
+n = len(json.load(open(os.path.join(ROOT, "data_raw", "base.json"), encoding="utf-8")))
+with open(os.path.join(ROOT, "index_src.html"), encoding="utf-8") as f:
+    idx = f.read().replace("__COVER__", jpeg_uri(cover, 1100)).replace("__N__", str(n))
+with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
+    f.write(idx)

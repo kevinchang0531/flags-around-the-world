@@ -1,0 +1,227 @@
+[
+{
+"id": "bt",
+"en": "Bhutan",
+"subregion": "Southern Asia",
+"capital_en": "Thimphu",
+"languages_en": [
+"Dzongkha"
+]
+},
+{
+"id": "in",
+"en": "India",
+"subregion": "Southern Asia",
+"capital_en": "New Delhi",
+"languages_en": [
+"English",
+"Hindi",
+"Tamil"
+]
+},
+{
+"id": "ir",
+"en": "Iran",
+"subregion": "Southern Asia",
+"capital_en": "Tehran",
+"languages_en": [
+"Persian (Farsi)"
+]
+},
+{
+"id": "mv",
+"en": "Maldives",
+"subregion": "Southern Asia",
+"capital_en": "Malé",
+"languages_en": [
+"Maldivian"
+]
+},
+{
+"id": "np",
+"en": "Nepal",
+"subregion": "Southern Asia",
+"capital_en": "Kathmandu",
+"languages_en": [
+"Nepali"
+]
+},
+{
+"id": "pk",
+"en": "Pakistan",
+"subregion": "Southern Asia",
+"capital_en": "Islamabad",
+"languages_en": [
+"English",
+"Urdu"
+]
+},
+{
+"id": "lk",
+"en": "Sri Lanka",
+"subregion": "Southern Asia",
+"capital_en": "Colombo",
+"languages_en": [
+"Sinhala",
+"Tamil"
+]
+},
+{
+"id": "am",
+"en": "Armenia",
+"subregion": "Western Asia",
+"capital_en": "Yerevan",
+"languages_en": [
+"Armenian"
+]
+},
+{
+"id": "az",
+"en": "Azerbaijan",
+"subregion": "Western Asia",
+"capital_en": "Baku",
+"languages_en": [
+"Azerbaijani",
+"Russian"
+]
+},
+{
+"id": "bh",
+"en": "Bahrain",
+"subregion": "Western Asia",
+"capital_en": "Manama",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ge",
+"en": "Georgia",
+"subregion": "Western Asia",
+"capital_en": "Tbilisi",
+"languages_en": [
+"Georgian"
+]
+},
+{
+"id": "iq",
+"en": "Iraq",
+"subregion": "Western Asia",
+"capital_en": "Baghdad",
+"languages_en": [
+"Arabic",
+"Aramaic",
+"Sorani"
+]
+},
+{
+"id": "il",
+"en": "Israel",
+"subregion": "Western Asia",
+"capital_en": "Jerusalem",
+"languages_en": [
+"Arabic",
+"Hebrew"
+]
+},
+{
+"id": "jo",
+"en": "Jordan",
+"subregion": "Western Asia",
+"capital_en": "Amman",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "kw",
+"en": "Kuwait",
+"subregion": "Western Asia",
+"capital_en": "Kuwait City",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "lb",
+"en": "Lebanon",
+"subregion": "Western Asia",
+"capital_en": "Beirut",
+"languages_en": [
+"Arabic",
+"French"
+]
+},
+{
+"id": "om",
+"en": "Oman",
+"subregion": "Western Asia",
+"capital_en": "Muscat",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ps",
+"en": "Palestine",
+"subregion": "Western Asia",
+"capital_en": "Ramallah",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "qa",
+"en": "Qatar",
+"subregion": "Western Asia",
+"capital_en": "Doha",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "sa",
+"en": "Saudi Arabia",
+"subregion": "Western Asia",
+"capital_en": "Riyadh",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "sy",
+"en": "Syria",
+"subregion": "Western Asia",
+"capital_en": "Damascus",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "tr",
+"en": "Türkiye",
+"subregion": "Western Asia",
+"capital_en": "Ankara",
+"languages_en": [
+"Turkish"
+]
+},
+{
+"id": "ae",
+"en": "United Arab Emirates",
+"subregion": "Western Asia",
+"capital_en": "Abu Dhabi",
+"languages_en": [
+"Arabic"
+]
+},
+{
+"id": "ye",
+"en": "Yemen",
+"subregion": "Western Asia",
+"capital_en": "Sana'a",
+"languages_en": [
+"Arabic"
+]
+}
+]

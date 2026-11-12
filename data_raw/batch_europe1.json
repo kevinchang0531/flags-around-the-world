@@ -1,0 +1,217 @@
+[
+{
+"id": "at",
+"en": "Austria",
+"subregion": "Central Europe",
+"capital_en": "Vienna",
+"languages_en": [
+"Austro-Bavarian German"
+]
+},
+{
+"id": "cz",
+"en": "Czechia",
+"subregion": "Central Europe",
+"capital_en": "Prague",
+"languages_en": [
+"Czech",
+"Slovak"
+]
+},
+{
+"id": "hu",
+"en": "Hungary",
+"subregion": "Central Europe",
+"capital_en": "Budapest",
+"languages_en": [
+"Hungarian"
+]
+},
+{
+"id": "pl",
+"en": "Poland",
+"subregion": "Central Europe",
+"capital_en": "Warsaw",
+"languages_en": [
+"Polish"
+]
+},
+{
+"id": "sk",
+"en": "Slovakia",
+"subregion": "Central Europe",
+"capital_en": "Bratislava",
+"languages_en": [
+"Slovak"
+]
+},
+{
+"id": "si",
+"en": "Slovenia",
+"subregion": "Central Europe",
+"capital_en": "Ljubljana",
+"languages_en": [
+"Slovene"
+]
+},
+{
+"id": "by",
+"en": "Belarus",
+"subregion": "Eastern Europe",
+"capital_en": "Minsk",
+"languages_en": [
+"Belarusian",
+"Russian"
+]
+},
+{
+"id": "md",
+"en": "Moldova",
+"subregion": "Eastern Europe",
+"capital_en": "Chișinău",
+"languages_en": [
+"Moldavian"
+]
+},
+{
+"id": "ru",
+"en": "Russia",
+"subregion": "Eastern Europe",
+"capital_en": "Moscow",
+"languages_en": [
+"Russian"
+]
+},
+{
+"id": "ua",
+"en": "Ukraine",
+"subregion": "Eastern Europe",
+"capital_en": "Kyiv",
+"languages_en": [
+"Ukrainian"
+]
+},
+{
+"id": "dk",
+"en": "Denmark",
+"subregion": "Northern Europe",
+"capital_en": "Copenhagen",
+"languages_en": [
+"Danish"
+]
+},
+{
+"id": "ee",
+"en": "Estonia",
+"subregion": "Northern Europe",
+"capital_en": "Tallinn",
+"languages_en": [
+"Estonian"
+]
+},
+{
+"id": "fi",
+"en": "Finland",
+"subregion": "Northern Europe",
+"capital_en": "Helsinki",
+"languages_en": [
+"Finnish",
+"Swedish"
+]
+},
+{
+"id": "is",
+"en": "Iceland",
+"subregion": "Northern Europe",
+"capital_en": "Reykjavik",
+"languages_en": [
+"Icelandic"
+]
+},
+{
+"id": "ie",
+"en": "Ireland",
+"subregion": "Northern Europe",
+"capital_en": "Dublin",
+"languages_en": [
+"English",
+"Irish"
+]
+},
+{
+"id": "lv",
+"en": "Latvia",
+"subregion": "Northern Europe",
+"capital_en": "Riga",
+"languages_en": [
+"Latvian"
+]
+},
+{
+"id": "lt",
+"en": "Lithuania",
+"subregion": "Northern Europe",
+"capital_en": "Vilnius",
+"languages_en": [
+"Lithuanian"
+]
+},
+{
+"id": "no",
+"en": "Norway",
+"subregion": "Northern Europe",
+"capital_en": "Oslo",
+"languages_en": [
+"Norwegian Nynorsk",
+"Norwegian Bokmål",
+"Sami"
+]
+},
+{
+"id": "se",
+"en": "Sweden",
+"subregion": "Northern Europe",
+"capital_en": "Stockholm",
+"languages_en": [
+"Swedish"
+]
+},
+{
+"id": "gb",
+"en": "United Kingdom",
+"subregion": "Northern Europe",
+"capital_en": "London",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "al",
+"en": "Albania",
+"subregion": "Southeast Europe",
+"capital_en": "Tirana",
+"languages_en": [
+"Albanian"
+]
+},
+{
+"id": "ba",
+"en": "Bosnia and Herzegovina",
+"subregion": "Southeast Europe",
+"capital_en": "Sarajevo",
+"languages_en": [
+"Bosnian",
+"Croatian",
+"Serbian"
+]
+},
+{
+"id": "bg",
+"en": "Bulgaria",
+"subregion": "Southeast Europe",
+"capital_en": "Sofia",
+"languages_en": [
+"Bulgarian"
+]
+}
+]

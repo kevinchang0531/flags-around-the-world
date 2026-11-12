@@ -1,0 +1,236 @@
+[
+{
+"id": "br",
+"en": "Brazil",
+"subregion": "South America",
+"capital_en": "Brasília",
+"languages_en": [
+"Portuguese"
+]
+},
+{
+"id": "cl",
+"en": "Chile",
+"subregion": "South America",
+"capital_en": "Santiago",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "co",
+"en": "Colombia",
+"subregion": "South America",
+"capital_en": "Bogotá",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "ec",
+"en": "Ecuador",
+"subregion": "South America",
+"capital_en": "Quito",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "gy",
+"en": "Guyana",
+"subregion": "South America",
+"capital_en": "Georgetown",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "py",
+"en": "Paraguay",
+"subregion": "South America",
+"capital_en": "Asunción",
+"languages_en": [
+"Guaraní",
+"Spanish"
+]
+},
+{
+"id": "pe",
+"en": "Peru",
+"subregion": "South America",
+"capital_en": "Lima",
+"languages_en": [
+"Aymara",
+"Quechua",
+"Spanish"
+]
+},
+{
+"id": "sr",
+"en": "Suriname",
+"subregion": "South America",
+"capital_en": "Paramaribo",
+"languages_en": [
+"Dutch"
+]
+},
+{
+"id": "uy",
+"en": "Uruguay",
+"subregion": "South America",
+"capital_en": "Montevideo",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "ve",
+"en": "Venezuela",
+"subregion": "South America",
+"capital_en": "Caracas",
+"languages_en": [
+"Spanish"
+]
+},
+{
+"id": "au",
+"en": "Australia",
+"subregion": "Australia and New Zealand",
+"capital_en": "Canberra",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "nz",
+"en": "New Zealand",
+"subregion": "Australia and New Zealand",
+"capital_en": "Wellington",
+"languages_en": [
+"English",
+"Māori",
+"New Zealand Sign Language"
+]
+},
+{
+"id": "fj",
+"en": "Fiji",
+"subregion": "Melanesia",
+"capital_en": "Suva",
+"languages_en": [
+"English",
+"Fijian",
+"Fiji Hindi"
+]
+},
+{
+"id": "pg",
+"en": "Papua New Guinea",
+"subregion": "Melanesia",
+"capital_en": "Port Moresby",
+"languages_en": [
+"English",
+"Hiri Motu",
+"Tok Pisin"
+]
+},
+{
+"id": "sb",
+"en": "Solomon Islands",
+"subregion": "Melanesia",
+"capital_en": "Honiara",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "vu",
+"en": "Vanuatu",
+"subregion": "Melanesia",
+"capital_en": "Port Vila",
+"languages_en": [
+"Bislama",
+"English",
+"French"
+]
+},
+{
+"id": "ki",
+"en": "Kiribati",
+"subregion": "Micronesia",
+"capital_en": "South Tarawa",
+"languages_en": [
+"English",
+"Gilbertese"
+]
+},
+{
+"id": "mh",
+"en": "Marshall Islands",
+"subregion": "Micronesia",
+"capital_en": "Majuro",
+"languages_en": [
+"English",
+"Marshallese"
+]
+},
+{
+"id": "fm",
+"en": "Micronesia",
+"subregion": "Micronesia",
+"capital_en": "Palikir",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "nr",
+"en": "Nauru",
+"subregion": "Micronesia",
+"capital_en": "Yaren",
+"languages_en": [
+"English",
+"Nauru"
+]
+},
+{
+"id": "pw",
+"en": "Palau",
+"subregion": "Micronesia",
+"capital_en": "Ngerulmud",
+"languages_en": [
+"English",
+"Palauan"
+]
+},
+{
+"id": "ws",
+"en": "Samoa",
+"subregion": "Polynesia",
+"capital_en": "Apia",
+"languages_en": [
+"English",
+"Samoan"
+]
+},
+{
+"id": "to",
+"en": "Tonga",
+"subregion": "Polynesia",
+"capital_en": "Nuku'alofa",
+"languages_en": [
+"English",
+"Tongan"
+]
+},
+{
+"id": "tv",
+"en": "Tuvalu",
+"subregion": "Polynesia",
+"capital_en": "Funafuti",
+"languages_en": [
+"English",
+"Tuvaluan"
+]
+}
+]

@@ -1,0 +1,288 @@
+[
+{
+"id": "bi",
+"en": "Burundi",
+"subregion": "Eastern Africa",
+"capital_en": "Gitega",
+"languages_en": [
+"French",
+"Kirundi"
+]
+},
+{
+"id": "km",
+"en": "Comoros",
+"subregion": "Eastern Africa",
+"capital_en": "Moroni",
+"languages_en": [
+"Arabic",
+"French",
+"Comorian"
+]
+},
+{
+"id": "dj",
+"en": "Djibouti",
+"subregion": "Eastern Africa",
+"capital_en": "Djibouti",
+"languages_en": [
+"Arabic",
+"French"
+]
+},
+{
+"id": "er",
+"en": "Eritrea",
+"subregion": "Eastern Africa",
+"capital_en": "Asmara",
+"languages_en": [
+"Arabic",
+"English",
+"Tigrinya"
+]
+},
+{
+"id": "et",
+"en": "Ethiopia",
+"subregion": "Eastern Africa",
+"capital_en": "Addis Ababa",
+"languages_en": [
+"Amharic"
+]
+},
+{
+"id": "ke",
+"en": "Kenya",
+"subregion": "Eastern Africa",
+"capital_en": "Nairobi",
+"languages_en": [
+"English",
+"Swahili"
+]
+},
+{
+"id": "mg",
+"en": "Madagascar",
+"subregion": "Eastern Africa",
+"capital_en": "Antananarivo",
+"languages_en": [
+"French",
+"Malagasy"
+]
+},
+{
+"id": "mw",
+"en": "Malawi",
+"subregion": "Eastern Africa",
+"capital_en": "Lilongwe",
+"languages_en": [
+"English",
+"Chewa"
+]
+},
+{
+"id": "mu",
+"en": "Mauritius",
+"subregion": "Eastern Africa",
+"capital_en": "Port Louis",
+"languages_en": [
+"English",
+"French",
+"Mauritian Creole"
+]
+},
+{
+"id": "mz",
+"en": "Mozambique",
+"subregion": "Eastern Africa",
+"capital_en": "Maputo",
+"languages_en": [
+"Portuguese"
+]
+},
+{
+"id": "rw",
+"en": "Rwanda",
+"subregion": "Eastern Africa",
+"capital_en": "Kigali",
+"languages_en": [
+"English",
+"French",
+"Kinyarwanda"
+]
+},
+{
+"id": "sc",
+"en": "Seychelles",
+"subregion": "Eastern Africa",
+"capital_en": "Victoria",
+"languages_en": [
+"Seychellois Creole",
+"English",
+"French"
+]
+},
+{
+"id": "so",
+"en": "Somalia",
+"subregion": "Eastern Africa",
+"capital_en": "Mogadishu",
+"languages_en": [
+"Arabic",
+"Somali"
+]
+},
+{
+"id": "tz",
+"en": "Tanzania",
+"subregion": "Eastern Africa",
+"capital_en": "Dodoma",
+"languages_en": [
+"English",
+"Swahili"
+]
+},
+{
+"id": "ug",
+"en": "Uganda",
+"subregion": "Eastern Africa",
+"capital_en": "Kampala",
+"languages_en": [
+"English",
+"Swahili"
+]
+},
+{
+"id": "zm",
+"en": "Zambia",
+"subregion": "Eastern Africa",
+"capital_en": "Lusaka",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "zw",
+"en": "Zimbabwe",
+"subregion": "Eastern Africa",
+"capital_en": "Harare",
+"languages_en": [
+"Chibarwe",
+"English",
+"Kalanga",
+"Khoisan",
+"Ndau",
+"Northern Ndebele",
+"Chewa",
+"Shona",
+"Sotho",
+"Tonga",
+"Tswana",
+"Tsonga",
+"Venda",
+"Xhosa",
+"Zimbabwean Sign Language"
+]
+},
+{
+"id": "ao",
+"en": "Angola",
+"subregion": "Middle Africa",
+"capital_en": "Luanda",
+"languages_en": [
+"Portuguese"
+]
+},
+{
+"id": "cm",
+"en": "Cameroon",
+"subregion": "Middle Africa",
+"capital_en": "Yaoundé",
+"languages_en": [
+"English",
+"French"
+]
+},
+{
+"id": "cf",
+"en": "Central African Republic",
+"subregion": "Middle Africa",
+"capital_en": "Bangui",
+"languages_en": [
+"French",
+"Sango"
+]
+},
+{
+"id": "td",
+"en": "Chad",
+"subregion": "Middle Africa",
+"capital_en": "N'Djamena",
+"languages_en": [
+"Arabic",
+"French"
+]
+},
+{
+"id": "cg",
+"en": "Congo",
+"subregion": "Middle Africa",
+"capital_en": "Brazzaville",
+"languages_en": [
+"French",
+"Kikongo",
+"Lingala"
+]
+},
+{
+"id": "cd",
+"en": "DR Congo",
+"subregion": "Middle Africa",
+"capital_en": "Kinshasa",
+"languages_en": [
+"French",
+"Kikongo",
+"Lingala",
+"Tshiluba",
+"Swahili"
+]
+},
+{
+"id": "gq",
+"en": "Equatorial Guinea",
+"subregion": "Middle Africa",
+"capital_en": "Ciudad de la Paz",
+"languages_en": [
+"French",
+"Portuguese",
+"Spanish"
+]
+},
+{
+"id": "ga",
+"en": "Gabon",
+"subregion": "Middle Africa",
+"capital_en": "Libreville",
+"languages_en": [
+"French"
+]
+},
+{
+"id": "ss",
+"en": "South Sudan",
+"subregion": "Middle Africa",
+"capital_en": "Juba",
+"languages_en": [
+"English"
+]
+},
+{
+"id": "st",
+"en": "São Tomé and Príncipe",
+"subregion": "Middle Africa",
+"capital_en": "São Tomé",
+"languages_en": [
+"Portuguese"
+]
+}
+]
