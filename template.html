@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>國旗環遊世界</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff8ec; --bg-2:#ffffff;
+  --ink:#2b2d42; --ink-2:#4a4e69; --ink-3:#8d8fa6; --ink-4:#d9d6cc;
+  --accent:#ff7a1a;   /* 主強調：活力橘 */
+  --accent-2:#1e88e5; /* 輔強調：天空藍 */
+  --t1:55px; --t2:34px; --t3:21px; --t4:13px;
+  --s1:80px; --s2:48px; --s3:24px; --s4:12px;
+  --radius:22px;
+  --shadow:0 10px 30px rgba(43,45,66,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;overflow:hidden}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+/* ---------- 共用 UI ---------- */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .45s ease}
+#section-tag{position:fixed;top:16px;left:24px;z-index:40;font-size:var(--t4);font-weight:700;
+  color:var(--ink-2);background:rgba(255,255,255,.85);padding:6px 14px;border-radius:999px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);letter-spacing:.08em}
+#pageInfo{position:fixed;right:24px;bottom:16px;z-index:40;font-size:var(--t4);color:var(--ink-2);
+  background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px}
+#hint{position:fixed;left:24px;bottom:16px;z-index:40;font-size:var(--t4);color:var(--ink-2);
+  background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px}
+#navbtns{position:fixed;right:24px;top:12px;z-index:40;display:flex;gap:8px}
+#navbtns button{border:0;background:#fff;color:var(--ink-2);font:inherit;font-size:var(--t4);font-weight:700;
+  padding:6px 12px;border-radius:999px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+#navbtns button:hover{color:var(--accent)}
+
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:70px 90px 60px;opacity:0;pointer-events:none;transform:translateY(16px);
+  transition:opacity .55s ease,transform .55s ease;overflow:hidden}
+.slide.active{opacity:1;pointer-events:auto;transform:translateY(0)}
+.slide-inner{width:100%;max-width:1320px}
+
+.kicker{font-family:"JetBrains Mono","Noto Sans TC",monospace;font-size:var(--t4);font-weight:700;
+  letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(40px,6vw,76px);font-weight:900;line-height:1.15}
+h2{font-size:clamp(28px,3.4vw,var(--t1));font-weight:900;line-height:1.2;margin-bottom:var(--s3)}
+h3{font-size:clamp(20px,2.2vw,var(--t2));font-weight:900;margin-bottom:8px}
+p,li{font-size:clamp(16px,1.6vw,var(--t3));line-height:1.7;color:var(--ink-2)}
+.hl{color:var(--accent)} .hl2{color:var(--accent-2)}
+
+.card{background:var(--bg-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+.grid2{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--s2);align-items:center}
+.grid2.flip > :first-child{order:2}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+
+/* 老師問 */
+.ask{margin-top:var(--s3);display:flex;gap:14px;align-items:flex-start;background:#fff3e6;
+  border-left:6px solid var(--accent);border-radius:14px;padding:14px 18px}
+.ask b{flex:none;font-size:var(--t4);background:var(--accent);color:#fff;border-radius:999px;padding:4px 12px;margin-top:4px}
+.ask span{font-size:clamp(16px,1.6vw,var(--t3));font-weight:700;color:var(--ink)}
+
+/* 教師備註（N 鍵切換） */
+.note{display:none;position:absolute;left:50%;bottom:44px;transform:translateX(-50%);width:min(92%,1100px);
+  background:#2b2d42;color:#fff;border-radius:14px;padding:12px 18px;font-size:15px;line-height:1.6;z-index:30}
+.note::before{content:"教師備註　";color:var(--accent);font-weight:900}
+body.show-notes .slide.active .note{display:block}
+
+/* 封面／結尾 */
+.full-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.full-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,248,236,.96) 0%,rgba(255,248,236,.85) 38%,rgba(255,248,236,0) 70%)}
+.full-bg.top::after{background:linear-gradient(180deg,rgba(255,248,236,.95) 0%,rgba(255,248,236,.7) 35%,rgba(255,248,236,0) 65%)}
+.cover-text{position:relative;z-index:2;max-width:620px}
+.cover-text p{margin-top:var(--s3)}
+.pill{display:inline-block;margin-top:var(--s3);font-size:var(--t4);font-weight:700;color:#fff;
+  background:var(--accent-2);border-radius:999px;padding:6px 16px;margin-right:8px}
+
+/* 旗子 */
+.flag{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.18);
+  border:1px solid rgba(0,0,0,.08);background:#fff}
+.flag-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:34px}
+.flag-card .flag{max-height:46vh;object-fit:contain}
+.flag-name{text-align:center;margin-top:18px;font-size:var(--t2);font-weight:900}
+.flag-name small{display:block;font-size:var(--t4);color:var(--ink-3);font-weight:500;letter-spacing:.1em}
+.meaning{list-style:none;display:grid;gap:12px}
+.meaning li{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:14px;padding:12px 16px;
+  box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.sw{flex:none;width:30px;height:30px;border-radius:8px;border:2px solid rgba(0,0,0,.12);margin-top:3px}
+.meaning b{color:var(--ink)}
+
+/* 猜猜看 */
+.guess{cursor:pointer;text-align:center}
+.guess .flag{transition:transform .25s}
+.guess:hover .flag{transform:scale(1.04)}
+.guess .ans{margin-top:16px;font-size:var(--t2);font-weight:900;color:var(--ink-4);transition:color .3s}
+.guess.open .ans{color:var(--accent)}
+
+/* 任務卡 */
+.task{text-align:center}
+.task .ico{font-size:56px;line-height:1;margin-bottom:12px}
+.task h3{font-size:clamp(20px,2vw,28px)}
+
+/* 地圖 */
+.map{position:relative;width:100%;margin:0 auto;aspect-ratio:1280/644;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+  background-size:100% 100%}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;cursor:pointer;
+  border:0;background:none;font:inherit}
+.pin img{width:46px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.4);border:2px solid #fff;transition:transform .2s}
+.pin:hover img{transform:scale(1.25)}
+.pin .lbl{margin-top:3px;font-size:12px;font-weight:900;color:#fff;background:rgba(43,45,66,.85);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.pin::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid #fff;margin-top:2px}
+.pin.home::after{background:var(--accent-2)}
+.pin.below{transform:translate(-50%,0);flex-direction:column-reverse}
+.pin.below::after{margin:0 0 2px}
+.pin.below .lbl{margin:0 0 3px}
+.pin.here img{width:60px;outline:4px solid var(--accent)}
+.pin.here .lbl{background:var(--accent)}
+.pin.dim{opacity:.85}
+.pulse{position:absolute;width:44px;height:44px;border-radius:50%;transform:translate(-50%,-50%);
+  border:4px solid var(--accent);animation:pulse 1.6s ease-out infinite;pointer-events:none}
+@keyframes pulse{0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.8)}}
+.credit{font-size:11px;color:var(--ink-3);margin-top:6px}
+
+/* 小檔案 */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:var(--s3)}
+.fact{background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.fact small{display:block;font-size:var(--t4);color:var(--ink-3);font-weight:700;letter-spacing:.1em}
+.fact div{font-size:clamp(16px,1.7vw,22px);font-weight:900;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#e8f2fd;color:var(--ink);border-radius:999px;padding:8px 16px;font-size:clamp(15px,1.4vw,18px);font-weight:700}
+.dir{display:flex;gap:12px;align-items:center;background:#e8f2fd;border-radius:14px;padding:12px 16px;margin-bottom:var(--s3)}
+.dir .arrow{font-size:34px}
+.dir p{color:var(--ink);font-weight:700}
+
+/* 名人 */
+.person{text-align:center}
+.avatar{width:min(140px,13vw);aspect-ratio:1/1;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  font-size:min(64px,6vw);background:linear-gradient(135deg,#fff3e6,#e8f2fd);border:4px solid #fff;box-shadow:var(--shadow)}
+.person h3{font-size:clamp(20px,2vw,28px)}
+.person .role{display:inline-block;font-size:var(--t4);font-weight:700;color:#fff;background:var(--accent-2);border-radius:999px;padding:3px 12px;margin-bottom:10px}
+.person p{font-size:clamp(15px,1.45vw,19px)}
+
+/* 比一比表格 */
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:9px 16px;text-align:left;border-bottom:1px solid #eee7da;font-size:clamp(14px,1.35vw,19px)}
+th{background:#fff3e6;color:var(--ink);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--accent)}
+th .s{color:var(--ink-3);font-size:12px;margin-left:4px}
+td img{width:44px;vertical-align:middle;border-radius:3px;border:1px solid #ddd}
+tr:last-child td{border-bottom:0}
+
+/* 測驗 */
+.quiz{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);align-items:center}
+.quiz .flag{max-height:33vh;object-fit:contain}
+.opts{display:grid;gap:14px}
+.opt{border:3px solid #eee7da;background:#fff;border-radius:16px;padding:16px 20px;font:inherit;font-size:clamp(18px,1.9vw,26px);
+  font-weight:900;color:var(--ink);cursor:pointer;text-align:left;transition:all .2s}
+.opt:hover{border-color:var(--accent-2)}
+.opt.ok{background:#e3f6e8;border-color:#2e9e57;color:#1f7a42}
+.opt.no{background:#fde8e8;border-color:#d64545;color:#b02c2c}
+.qmeta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.qmeta > span{font-size:var(--t3);font-weight:900}
+.qbtn{border:0;background:var(--accent);color:#fff;font:inherit;font-weight:900;font-size:18px;border-radius:999px;padding:10px 22px;cursor:pointer}
+.qbtn:disabled{opacity:.35;cursor:default}
+.feedback{min-height:32px;font-size:clamp(16px,1.6vw,21px);font-weight:700;margin-top:6px}
+
+/* CTA */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s3)}
+.step{background:rgba(255,255,255,.93);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.step .n{font-family:"JetBrains Mono",monospace;font-weight:700;color:#fff;background:var(--accent);
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+
+@media (max-width:900px){
+  html,body{overflow:auto}
+  .slide{padding:64px 18px 56px;align-items:flex-start;overflow-y:auto}
+  .grid2,.quiz,.grid3,.grid4,.steps{grid-template-columns:1fr}
+  .grid2.flip > :first-child{order:0}
+  .grid4{grid-template-columns:1fr 1fr}
+  .facts{grid-template-columns:1fr}
+  #hint{display:none}
+  .pin img{width:28px} .pin .lbl{font-size:10px}
+  .avatar{width:96px;font-size:44px}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="section-tag">— 引起動機 —</div>
+<div id="navbtns"><button id="btnMap" title="回到世界地圖">🗺 地圖</button><button id="btnNotes" title="教師備註（N）">📝 備註</button></div>
+<div id="pageInfo" class="mono">1 / 1</div>
+<div id="hint">← → 切頁　F 全螢幕　N 教師備註　M 地圖</div>
+<main id="deck"></main>
+
+<script>
+const FLAGS = __FLAGS__;
+const MAP_IMG = "__MAP__";
+const COVER_IMG = "__COVER__";
+const ENDING_IMG = "__ENDING__";
+
+/* 地圖座標：equirectangular，x=(lon+180)/360, y=(90-lat)/180 */
+const pos = (lat, lon) => ({x:(lon+180)/360*100, y:(90-lat)/180*100});
+
+const C = [
+ {id:"tw", name:"台灣", en:"TAIWAN", full:"中華民國（臺灣）", cont:"亞洲", capital:"臺北", lang:"華語、台語、客語、原住民族語", lat:23.7, lon:121,
+  flagNick:"青天白日滿地紅",
+  meaning:[["#000095","藍色","代表光明、正義，像晴朗的藍天"],["#ffffff","白色太陽","代表坦白、平等；12 道光芒代表一天 12 個時辰，提醒我們時時努力"],["#fe0000","紅色","代表熱情、不怕犧牲"]],
+  dir:["📍","我們就住在這裡！亞洲東邊、太平洋西邊的一座島"],
+  feat:["⛰️ 玉山 3,952 公尺","🧋 珍珠奶茶","🏮 夜市小吃","🐟 四面環海"],
+  people:[["🎬","李安","電影導演","兩次得到奧斯卡最佳導演獎，作品有《少年 Pi 的奇幻漂流》。"],["🏸","戴資穎","羽球選手","曾經是世界排名第一的「球后」。"],["🍞","吳寶春","麵包師傅","到法國參加世界級麵包大賽，拿下冠軍。"]],
+  ask:"國旗上的太陽有幾道光芒？數數看！", ask2:"說說看：你最喜歡台灣的哪一個地方？", ask3:"還有哪些台灣人讓你覺得很厲害？",
+  note:"答案：12 道光芒。國旗由陸皓東設計青天白日旗，孫中山加上滿地紅。可讓學生分享去過的縣市。"},
+ {id:"jp", name:"日本", en:"JAPAN", full:"日本國", cont:"亞洲", capital:"東京", lang:"日語", lat:36, lon:138,
+  flagNick:"日之丸（日章旗）",
+  meaning:[["#ffffff","白色底","代表純潔、誠實"],["#bc002d","紅色圓形","代表太陽！日本的名字意思是「太陽升起的地方」"]],
+  dir:["↗️","在台灣的東北方，搭飛機到東京大約 3 小時"],
+  feat:["🗻 富士山 3,776 公尺","🌸 櫻花","🚄 新幹線","🍣 壽司"],
+  people:[["✏️","手塚治虫","漫畫家","被稱為「漫畫之神」，畫了《原子小金剛》。"],["🎨","宮崎駿","動畫導演","做出《龍貓》《神隱少女》等動畫電影。"],["⚾","大谷翔平","棒球選手","又會投球又會打擊，被叫做「二刀流」。"]],
+  ask:"日本國旗只有 2 種顏色，你猜紅色圓形是什麼？", ask2:"台灣和日本都是島國，還有哪些地方很像？", ask3:"你看過哪一部宮崎駿的動畫？",
+  note:"紅圓＝太陽。日本國名「日本」即「日之本」，太陽升起之處。富士山是日本最高峰。"},
+ {id:"in", name:"印度", en:"INDIA", full:"印度共和國", cont:"亞洲", capital:"新德里", lang:"印地語、英語等數百種語言", lat:21, lon:78,
+  flagNick:"三色旗＋法輪",
+  meaning:[["#ff9933","橘色","代表勇氣和犧牲"],["#ffffff","白色","代表和平與真理"],["#138808","綠色","代表信心和豐收的土地"],["#000080","藍色法輪","中間的輪子有 24 根輻條，代表國家不停前進"]],
+  dir:["⬅️","在台灣的西邊，要飛過中南半島，大約 6～7 小時"],
+  feat:["🕌 泰姬瑪哈陵","🍛 咖哩","👨‍👩‍👧‍👦 人口世界第一","🐘 大象"],
+  people:[["🕊️","甘地","印度國父","用不打架的「非暴力」方法，帶領印度獨立。"],["📜","泰戈爾","詩人","亞洲第一位得到諾貝爾文學獎的人。"],["➗","拉馬努金","數學家","幾乎靠自學，發現了好多數學公式。"]],
+  ask:"中間的藍色輪子有幾根輻條？", ask2:"印度人口世界第一，你覺得人很多的國家會有什麼特別的事？", ask3:"甘地不用打架也能讓國家獨立，你覺得他靠什麼？",
+  note:"答案：24 根。法輪稱為「阿育王法輪」。印度約自 2023 年起人口超越中國成為世界第一。"},
+ {id:"gb", name:"英國", en:"UNITED KINGDOM", full:"大不列顛及北愛爾蘭聯合王國", cont:"歐洲", capital:"倫敦", lang:"英語", lat:54, lon:-2,
+  flagNick:"米字旗（聯合旗）",
+  meaning:[["#c8102e","紅色十字","英格蘭的「聖喬治十字」"],["#012169","藍底白色斜十字","蘇格蘭的「聖安德魯十字」"],["#ffffff","白底紅色斜十字","愛爾蘭的「聖派翠克十字」"]],
+  dir:["↖️","在台灣的西北方，非常遠！飛機要飛 14 個小時以上"],
+  feat:["🕰️ 大笨鐘","🚌 紅色雙層巴士","🫖 下午茶","👑 國王"],
+  people:[["🍎","牛頓","科學家","看到蘋果掉下來，想出「萬有引力」。"],["🎭","莎士比亞","劇作家","寫了《羅密歐與茱麗葉》等有名的故事。"],["🪄","J.K. 羅琳","作家","寫出《哈利波特》系列小說。"]],
+  ask:"米字旗是由幾個十字疊在一起的？", ask2:"英國也是島國，它和台灣誰比較大？（可查一查）", ask3:"你知道哈利波特念的魔法學校叫什麼名字嗎？",
+  note:"答案：3 個十字疊合。威爾斯沒有出現在國旗上，是很好的延伸討論。英國面積約台灣的 6.7 倍。"},
+ {id:"fr", name:"法國", en:"FRANCE", full:"法蘭西共和國", cont:"歐洲", capital:"巴黎", lang:"法語", lat:46.5, lon:2.5,
+  flagNick:"藍白紅三色旗",
+  meaning:[["#002654","藍色","代表自由"],["#ffffff","白色","代表平等"],["#ce1126","紅色","代表博愛（愛護所有人）"]],
+  dir:["↖️","在台灣的西北方，歐洲的西邊，飛機大約 14 個小時"],
+  feat:["🗼 艾菲爾鐵塔","🖼️ 羅浮宮（蒙娜麗莎）","🥐 可頌麵包","🧀 起司"],
+  people:[["⚗️","居禮夫人","科學家","研究放射性，兩次得到諾貝爾獎（她出生在波蘭）。"],["⚔️","拿破崙","法國皇帝","很會打仗的將軍，後來當上皇帝。"],["🌹","聖修伯里","作家","寫了《小王子》，也是一位飛行員。"]],
+  ask:"法國國旗是直的三條，台灣國旗不是，你還發現哪些不一樣？", ask2:"艾菲爾鐵塔大約 330 公尺，比台北 101 高還是矮？", ask3:"你讀過《小王子》嗎？裡面誰最讓你印象深刻？",
+  note:"三色旗出現在 1789 年法國大革命後。台北 101 約 508 公尺，比艾菲爾鐵塔高。"},
+ {id:"us", name:"美國", en:"UNITED STATES", full:"美利堅合眾國", cont:"北美洲", capital:"華盛頓特區", lang:"英語（最主要）", lat:39, lon:-98,
+  flagNick:"星條旗",
+  meaning:[["#ffffff","50 顆星星","代表美國的 50 個州"],["#b22234","13 條紅白條紋","代表最早建國的 13 個州"],["#3c3b6e","藍色","代表正義和堅持"]],
+  dir:["➡️","在台灣的東邊，要飛越太平洋，到西岸大約 11～12 小時"],
+  feat:["🗽 自由女神像","🏜️ 大峽谷","🚀 NASA 登月","🍔 漢堡"],
+  people:[["🎩","林肯","第 16 任總統","廢除奴隸制度，讓所有人都是自由的。"],["💡","愛迪生","發明家","改良電燈泡，一生有上千項發明。"],["🌕","阿姆斯壯","太空人","1969 年成為第一個踏上月球的人。"]],
+  ask:"星條旗上有幾顆星星？為什麼？", ask2:"美國在台灣的東邊，中間隔著什麼大海？", ask3:"如果你能發明一個東西，你想發明什麼？",
+  note:"50 顆星＝50 州；13 條紋（7 紅 6 白）＝獨立時的 13 州。答案：太平洋。"},
+ {id:"br", name:"巴西", en:"BRAZIL", full:"巴西聯邦共和國", cont:"南美洲", capital:"巴西利亞", lang:"葡萄牙語", lat:-10, lon:-52,
+  flagNick:"綠黃天球旗",
+  meaning:[["#009c3b","綠色","代表茂密的森林"],["#ffdf00","黃色菱形","代表豐富的礦產，像黃金"],["#002776","藍色圓球","是 1889 年那天晚上的星空；27 顆星代表各州"],["#ffffff","白色帶子","寫著「秩序與進步」"]],
+  dir:["🌏","幾乎在地球的另一邊！要轉機，飛超過 24 小時"],
+  feat:["🌳 亞馬遜雨林","💃 森巴嘉年華","⚽ 世界盃冠軍 5 次","🦜 金剛鸚鵡"],
+  people:[["⚽","比利","足球員","被稱為「球王」，拿過 3 次世界盃冠軍。"],["🏎️","塞納","賽車手","F1 賽車三次世界冠軍。"],["🏛️","尼邁耶","建築師","設計了首都巴西利亞許多造型特別的建築。"]],
+  ask:"巴西國旗上那條白色帶子寫的是什麼？", ask2:"台灣白天的時候，巴西大約是晚上，為什麼？", ask3:"你最喜歡哪一種運動？為什麼？",
+  note:"答案：Ordem e Progresso（秩序與進步）。巴西與台灣時差 11 小時，可連結地球自轉。"},
+ {id:"eg", name:"埃及", en:"EGYPT", full:"阿拉伯埃及共和國", cont:"非洲", capital:"開羅", lang:"阿拉伯語", lat:26.8, lon:30.8,
+  flagNick:"紅白黑三色旗＋金鷹",
+  meaning:[["#ce1126","紅色","代表人民努力爭取自由"],["#ffffff","白色","代表和平"],["#000000","黑色","代表結束了被欺負的黑暗時代"],["#c09300","金色老鷹","「薩拉丁之鷹」，代表勇敢強大"]],
+  dir:["⬅️","在台灣的西邊，非洲的東北角，靠近亞洲"],
+  feat:["🔺 金字塔","🦁 人面獅身像","🌊 尼羅河約 6,650 公里","🐪 駱駝"],
+  people:[["👑","圖坦卡門","少年法老","大約 9 歲就當上國王，陵墓裡有好多寶物。"],["🐍","克麗奧佩脫拉","女法老","埃及最後一位法老，被稱為「埃及豔后」。"],["⚽","薩拉赫","足球員","埃及的足球明星，多次拿下英國聯賽得分王。"]],
+  ask:"國旗中間的金色動物是什麼？", ask2:"金字塔是用來做什麼的？", ask3:"如果你能回到古埃及，你想問法老什麼問題？",
+  note:"答案：老鷹（薩拉丁之鷹）。金字塔是古埃及法老的陵墓。尼羅河是世界最長河流之一。"},
+ {id:"au", name:"澳洲", en:"AUSTRALIA", full:"澳大利亞聯邦", cont:"大洋洲", capital:"坎培拉（不是雪梨喔！）", lang:"英語", lat:-25, lon:134,
+  flagNick:"南十字星旗",
+  meaning:[["#012169","左上角的英國國旗","以前曾是英國的殖民地"],["#ffffff","大的七角星","「聯邦星」，代表 6 個州和領地"],["#ffffff","右邊 5 顆星","「南十字星」，只有在南半球才看得到"]],
+  dir:["⬇️","在台灣的南方，在南半球！季節和台灣相反，飛雪梨大約 9 小時"],
+  feat:["🦘 袋鼠","🐨 無尾熊","🎵 雪梨歌劇院","🐠 大堡礁"],
+  people:[["🐊","史蒂夫・厄文","動物保育家","人稱「鱷魚先生」，一生保護野生動物。"],["🏃‍♀️","凱西・弗里曼","田徑選手","原住民選手，2000 年雪梨奧運 400 公尺金牌。"],["🏊","伊恩・索普","游泳選手","綽號「魚雷」，拿過 5 面奧運金牌。"]],
+  ask:"澳洲國旗上為什麼有英國國旗？", ask2:"台灣過年很冷的時候，澳洲是什麼季節？", ask3:"如果你要保護一種動物，你會選誰？",
+  note:"英國旗＝與英國的歷史關係；南十字星位於南半球天空。台灣冬天時澳洲是夏天。很多人誤以為首都是雪梨。"}
+];
+
+const QUIZ = [
+  {f:"jp", a:"日本", o:["日本","韓國","中國"]},
+  {f:"fr", a:"法國", o:["義大利","法國","荷蘭"]},
+  {f:"br", a:"巴西", o:["阿根廷","澳洲","巴西"]},
+  {f:"in", a:"印度", o:["印度","愛爾蘭","埃及"]},
+  {f:"au", a:"澳洲", o:["英國","紐西蘭","澳洲"]},
+  {f:"eg", a:"埃及", o:["埃及","印度","法國"]},
+  {f:"us", a:"美國", o:["英國","美國","巴西"]},
+  {f:"gb", a:"英國", o:["澳洲","美國","英國"]},
+  {f:"tw", a:"台灣", o:["日本","台灣","法國"]}
+];
+
+const deck = document.getElementById('deck');
+const S = [];  // [section, html, extraClass]
+const flagImg = (id, cls="flag") => `<img class="${cls}" src="${FLAGS[id]}" alt="${(C.find(c=>c.id===id)||{}).name||id}國旗">`;
+const ask = t => `<div class="ask"><b>老師問</b><span>${t}</span></div>`;
+const note = t => t ? `<aside class="note">${t}</aside>` : "";
+function mapHTML(focus){
+  const tw = C[0];
+  let pins = C.map(c=>{
+    const p = pos(c.lat,c.lon);
+    if(focus && c.id!==focus && c.id!=="tw") return "";
+    let cls = c.id===focus ? "here" : (c.id==="tw" ? "home" : "");
+    if(c.id==="fr" && !focus) cls += " below";
+    return `<button class="pin ${cls}" data-go="${c.id}" style="left:${p.x}%;top:${p.y}%"><img src="${FLAGS[c.id]}" alt=""><span class="lbl">${c.name}</span></button>`;
+  }).join("");
+  if(focus){const p=pos(...[C.find(c=>c.id===focus)].map(c=>[c.lat,c.lon])[0]); pins += `<div class="pulse" style="left:${p.x}%;top:${p.y}%"></div>`;}
+  return `<div class="map" style="background-image:url(${MAP_IMG})">${pins}</div>`;
+}
+
+/* ===== 引起動機 ===== */
+S.push(["引起動機", `
+  <div class="full-bg" style="background-image:url(${COVER_IMG})"></div>
+  <div class="slide-inner"><div class="cover-text">
+    <div class="kicker">國小社會 · 國際教育</div>
+    <h1>國旗<span class="hl">環遊</span><br>世界</h1>
+    <p>跟著 9 面國旗出發，認識每個國家的<b>國旗、樣子、位置</b>和<b>有名的人</b>！</p>
+    <span class="pill">五大洲・9 個國家</span><span class="pill" style="background:var(--accent)">準備好護照了嗎？</span>
+  </div></div>${note("開場可問：誰出過國？去過哪裡？在那裡看過國旗嗎？")}`]);
+
+S.push(["引起動機", `<div class="slide-inner">
+  <div class="kicker">暖身猜猜看</div>
+  <h2>國旗會<span class="hl">說話</span>嗎？</h2>
+  <p style="margin-bottom:28px">每面國旗的顏色和圖案都藏著故事。先來猜猜：這是哪一國？<b>點國旗看答案！</b></p>
+  <div class="grid3">
+    <div class="card guess">${flagImg("jp")}<div class="ans">？ → 日本</div></div>
+    <div class="card guess">${flagImg("us")}<div class="ans">？ → 美國</div></div>
+    <div class="card guess">${flagImg("gb")}<div class="ans">？ → 英國</div></div>
+  </div></div>${note("讓學生先舉手猜，再點開答案。可以追問：你是看到什麼線索猜出來的？")}`]);
+
+S.push(["引起動機", `<div class="slide-inner">
+  <div class="kicker">今天的任務</div>
+  <h2>每到一國，<span class="hl">完成 4 件事</span></h2>
+  <div class="grid4">
+    <div class="card task"><div class="ico">🚩</div><h3>看國旗</h3><p>顏色和圖案代表什麼？</p></div>
+    <div class="card task"><div class="ico">📖</div><h3>認識國家</h3><p>首都、語言、特色</p></div>
+    <div class="card task"><div class="ico">🗺️</div><h3>找位置</h3><p>在哪一洲？離台灣多遠？</p></div>
+    <div class="card task"><div class="ico">⭐</div><h3>認識名人</h3><p>這個國家有誰很厲害？</p></div>
+  </div>
+  ${ask("你覺得一面國旗，最少要有幾種顏色？")}</div>${note("答案沒有標準，日本只有 2 種顏色就是很好的例子。")}`]);
+
+/* ===== 維持注意：世界地圖總覽 ===== */
+S.push(["維持注意", `<div class="slide-inner" style="max-width:1200px">
+  <div class="kicker">旅行路線</div>
+  <h2 style="margin-bottom:14px">我們要去的 <span class="hl">9 個國家</span></h2>
+  <div style="max-width:calc((100vh - 270px) * 1.99);margin:0 auto">${mapHTML(null)}
+  <div class="credit">點地圖上的國旗可以直接飛過去。地圖：Daniel R. Strebe / Wikimedia Commons（CC BY-SA 3.0）</div></div>
+  </div>${note("先讓學生說說看哪些國家在台灣附近、哪些很遠；也可以數數看每一洲各有幾國。")}`]);
+
+/* ===== 每國 3 頁 ===== */
+C.forEach((c,i)=>{
+  const stop = `第 ${i+1} 站 · ${c.cont}`;
+  const tag = `維持注意 · ${c.name}`;
+  // 1. 國旗的祕密
+  S.push([tag, `<div class="slide-inner"><div class="grid2 ${i%2?'flip':''}">
+    <div class="flag-card">${flagImg(c.id)}<div class="flag-name">${c.name}<small>${c.en}</small></div></div>
+    <div><div class="kicker">${stop}</div><h2>${c.name}國旗的<span class="hl">祕密</span></h2>
+      <p style="margin:-10px 0 16px">名字叫做「<b>${c.flagNick}</b>」</p>
+      <ul class="meaning">${c.meaning.map(m=>`<li><span class="sw" style="background:${m[0]}"></span><div><b>${m[1]}</b>：${m[2]}</div></li>`).join("")}</ul>
+      ${ask(c.ask)}</div>
+  </div></div>${note(c.note)}`, c.id]);
+  // 2. 國家介紹＋位置
+  S.push([tag, `<div class="slide-inner"><div class="grid2 ${i%2?'':'flip'}">
+    <div>${mapHTML(c.id)}<div class="credit">地圖：Daniel R. Strebe / Wikimedia Commons（CC BY-SA 3.0）</div></div>
+    <div><div class="kicker">${stop}</div><h2>${c.name}在<span class="hl">哪裡</span>？</h2>
+      <div class="dir"><span class="arrow">${c.dir[0]}</span><p>${c.dir[1]}</p></div>
+      <div class="facts">
+        <div class="fact"><small>全名</small><div>${c.full}</div></div>
+        <div class="fact"><small>所在洲</small><div>${c.cont}</div></div>
+        <div class="fact"><small>首都</small><div>${c.capital}</div></div>
+        <div class="fact"><small>語言</small><div>${c.lang}</div></div>
+      </div>
+      <div class="chips">${c.feat.map(f=>`<span class="chip">${f}</span>`).join("")}</div>
+      ${ask(c.ask2)}</div>
+  </div></div>`]);
+  // 3. 著名人物
+  S.push([tag, `<div class="slide-inner">
+    <div class="kicker">${stop}</div><h2>${c.name}的<span class="hl">著名人物</span></h2>
+    <div class="grid3">${c.people.map(p=>`<div class="card person"><div class="avatar">${p[0]}</div>
+      <h3>${p[1]}</h3><span class="role">${p[2]}</span><p>${p[3]}</p></div>`).join("")}</div>
+    ${ask(c.ask3)}</div>`]);
+});
+
+/* ===== 喚起行動 ===== */
+S.push(["喚起行動", `<div class="slide-inner">
+  <div class="kicker">整理一下</div>
+  <h2 style="margin-bottom:16px">9 國<span class="hl">比一比</span></h2>
+  <table id="cmp"><thead><tr><th>國旗</th><th data-k="1">國家<span class="s">⇅</span></th><th data-k="2">洲<span class="s">⇅</span></th><th data-k="3">首都<span class="s">⇅</span></th><th data-k="4">國旗顏色數<span class="s">⇅</span></th><th data-k="5">國旗上有星星？<span class="s">⇅</span></th></tr></thead>
+  <tbody>${C.map(c=>{const n={tw:3,jp:2,in:4,gb:3,fr:3,us:3,br:4,eg:4,au:3}[c.id];const star=["us","br","au"].includes(c.id)?"⭐ 有":"—";
+    return `<tr><td><img src="${FLAGS[c.id]}" alt=""></td><td><b>${c.name}</b></td><td>${c.cont}</td><td>${c.capital.replace(/（.*）/,"")}</td><td>${n}</td><td>${star}</td></tr>`}).join("")}</tbody></table>
+  <p style="margin-top:10px;font-size:14px">點表頭可以排序。國旗顏色數只算主要顏色。</p>
+  </div>${note("可問：哪一洲的國家最多？哪幾面國旗有星星？紅色出現在幾面國旗上？（台、日、英、法、美、埃 6 面有紅色）")}`]);
+
+S.push(["喚起行動", `<div class="slide-inner">
+  <div class="qmeta"><div><div class="kicker">闖關小測驗</div><h2 style="margin:0">看國旗，<span class="hl">猜國家</span></h2></div>
+    <span id="qscore" class="mono">0 / ${QUIZ.length}</span></div>
+  <div class="quiz">
+    <div class="flag-card" id="qflag"></div>
+    <div><p id="qno" style="font-weight:900;margin-bottom:10px"></p><div class="opts" id="qopts"></div>
+      <div class="feedback" id="qfb"></div>
+      <div style="display:flex;gap:10px;margin-top:10px"><button class="qbtn" id="qnext" disabled>下一題 →</button><button class="qbtn" id="qreset" style="background:var(--accent-2)">重來</button></div></div>
+  </div></div>${note("可分組搶答，每組派一人上台點選。")}`]);
+
+S.push(["喚起行動", `
+  <div class="full-bg top" style="background-image:url(${ENDING_IMG})"></div>
+  <div class="slide-inner" style="position:relative;z-index:2;align-self:flex-start;margin-top:10px">
+    <div class="kicker">回家小任務</div>
+    <h2>設計我們班的<span class="hl">班旗</span>！</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>選顏色</h3><p>選 2～3 種顏色，想想每種顏色代表什麼。</p></div>
+      <div class="step"><div class="n">2</div><h3>放圖案</h3><p>加一個圖案，像太陽、星星或動物，代表我們班的特色。</p></div>
+      <div class="step"><div class="n">3</div><h3>說故事</h3><p>下次上課，用 30 秒介紹你的班旗在「說」什麼。</p></div>
+    </div>
+  </div>${note("可延伸：請學生回家查一個今天沒介紹的國家國旗，下次分享。")}`]);
+
+/* ===== 渲染 ===== */
+const countryFirst = {};
+S.forEach((s,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'slide'; sec.dataset.slide = i+1; sec.dataset.section = s[0];
+  if(s[2] && !(s[2] in countryFirst)) countryFirst[s[2]] = i;
+  sec.innerHTML = s[1]; deck.appendChild(sec);
+});
+const slides = [...document.querySelectorAll('.slide')];
+const MAP_PAGE = 3;
+let cur = 0;
+function go(n){
+  n = Math.max(0, Math.min(slides.length-1, n));
+  slides[cur].classList.remove('active'); cur = n; slides[cur].classList.add('active');
+  document.getElementById('progress').style.width = ((cur+1)/slides.length*100)+'%';
+  document.getElementById('pageInfo').textContent = `${cur+1} / ${slides.length}`;
+  document.getElementById('section-tag').textContent = `— ${slides[cur].dataset.section} —`;
+  try{ history.replaceState(null,'','#'+(cur+1)); }catch(e){}
+}
+document.addEventListener('keydown', e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+  else if(e.key==='Home') go(0); else if(e.key==='End') go(slides.length-1);
+  else if(e.key==='f'||e.key==='F'){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(()=>{}); }
+  else if(e.key==='n'||e.key==='N') document.body.classList.toggle('show-notes');
+  else if(e.key==='m'||e.key==='M') go(MAP_PAGE);
+});
+document.addEventListener('click', e=>{
+  const pin = e.target.closest('.pin'); if(pin){ go(countryFirst[pin.dataset.go]); return; }
+  if(e.target.closest('button,.guess,th,a,table,.opts,.map,#navbtns')) return;
+  if(window.innerWidth <= 900) return;
+  if(e.clientX > innerWidth*0.7) go(cur+1); else if(e.clientX < innerWidth*0.3) go(cur-1);
+});
+let tx=null; document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null});
+document.querySelectorAll('.guess').forEach(g=>g.addEventListener('click',()=>g.classList.toggle('open')));
+document.getElementById('btnMap').onclick = ()=>go(MAP_PAGE);
+document.getElementById('btnNotes').onclick = ()=>document.body.classList.toggle('show-notes');
+
+/* 排序表 */
+(function(){const t=document.getElementById('cmp');let dir={};t.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{
+  const k=+th.dataset.k;dir[k]=!dir[k];const rows=[...t.tBodies[0].rows];
+  rows.sort((a,b)=>{const x=a.cells[k].innerText,y=b.cells[k].innerText;const nx=parseFloat(x),ny=parseFloat(y);
+    const r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:x.localeCompare(y,'zh-Hant');return dir[k]?r:-r});
+  rows.forEach(r=>t.tBodies[0].appendChild(r));});})();
+
+/* 測驗 */
+(function(){let qi=0,score=0,done=false;
+  const $=id=>document.getElementById(id);
+  function show(){done=false;const q=QUIZ[qi];$('qflag').innerHTML=flagImg(q.f);$('qno').textContent=`第 ${qi+1} 題：這是哪一國的國旗？`;
+    $('qfb').textContent='';$('qnext').disabled=true;$('qnext').textContent= qi===QUIZ.length-1?'看成績 →':'下一題 →';
+    $('qopts').innerHTML=q.o.map(o=>`<button class="opt">${o}</button>`).join('');
+    $('qopts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;
+      const ok=b.textContent===q.a; if(ok)score++; b.classList.add(ok?'ok':'no');
+      if(!ok)[...$('qopts').children].find(x=>x.textContent===q.a).classList.add('ok');
+      $('qfb').innerHTML= ok?'🎉 答對了！':`再想想～答案是 <b>${q.a}</b>`; $('qfb').style.color= ok?'#1f7a42':'#b02c2c';
+      $('qscore').textContent=`${score} / ${QUIZ.length}`;$('qnext').disabled=false;});}
+  $('qnext').onclick=()=>{if(qi<QUIZ.length-1){qi++;show();}else{$('qopts').innerHTML='';$('qflag').innerHTML='<div style="font-size:96px;text-align:center">🏆</div>';
+    $('qno').textContent='闖關完成！';$('qfb').style.color='var(--ink)';$('qfb').innerHTML=`你答對了 <b class="hl">${score}</b> 題，共 ${QUIZ.length} 題！`;$('qnext').disabled=true;}};
+  $('qreset').onclick=()=>{qi=0;score=0;$('qscore').textContent=`0 / ${QUIZ.length}`;show();};
+  show();})();
+
+const start = parseInt((location.hash||'').slice(1));
+slides[0].classList.add('active'); go(isNaN(start)?0:start-1);
+</script>
+</body>
+</html>
