@@ -205,7 +205,7 @@ select{border:2px solid var(--line);border-radius:999px;padding:6px 12px;font:in
   <section class="view" id="v-wall">
     <div class="filters">
       <input type="search" id="q" placeholder="🔍 搜尋國家（中文或英文）">
-      <select id="sort"><option value="cont">依洲排列</option><option value="name">依國名筆畫</option><option value="area-d">面積大→小</option><option value="area-a">面積小→大</option><option value="dist">離台灣近→遠</option></select>
+      <select id="sort"><option value="cont">依洲排列</option><option value="name">依國名筆畫</option><option value="area-d">面積大→小</option><option value="area-a">面積小→大</option><option value="dist">離中華民國近→遠</option></select>
       <button class="chip" id="hideNames">🙈 遮住國名</button>
       <span class="sp"></span>找到 <span class="count" id="cnt">0</span> 國
     </div>
@@ -268,15 +268,15 @@ function direction(c){
   if(Math.abs(dLon)>150) return "在地球的另一邊";
   const ang=Math.atan2(dLat,dLon)*180/Math.PI; // 0=東
   const dirs=["東","東北","北","西北","西","西南","南","東南"];
-  return "在台灣的"+dirs[((Math.round(ang/45)%8)+8)%8]+"方";
+  return "在中華民國的"+dirs[((Math.round(ang/45)%8)+8)%8]+"方";
 }
 function areaText(a){
   if(!a) return "—";
   const km = a>=10000? Math.round(a/1000)*1000 : Math.round(a);
   const r = a/TW_AREA; let cmp;
-  if(Math.abs(r-1)<.15) cmp="和台灣差不多大";
-  else if(r>1) cmp=`大約是台灣的 ${r>=10?Math.round(r):r.toFixed(1)} 倍`;
-  else cmp = r>=0.01? `大約是台灣的 ${Math.max(1,Math.round(r*100))}%` : "比台北市還小";
+  if(Math.abs(r-1)<.15) cmp="和中華民國差不多大";
+  else if(r>1) cmp=`大約是中華民國的 ${r>=10?Math.round(r):r.toFixed(1)} 倍`;
+  else cmp = r>=0.01? `大約是中華民國的 ${Math.max(1,Math.round(r*100))}%` : "比台北市還小";
   return {km:km.toLocaleString(), cmp};
 }
 const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
@@ -382,7 +382,7 @@ const CONT_ORDER = Object.fromEntries(CONTS.map((c,i)=>[c.k,i]));
 function wallList(){
   let L = COUNTRIES.filter(c=>{
     if(wf.cont && c.cont!==wf.cont) return false;
-    if(wf.q && !(c.zh+c.zhFull+c.en+c.id).toLowerCase().includes(wf.q)) return false;
+    if(wf.q && !(c.zh+c.zhFull+c.en+c.id+(c.id==="tw"?"台灣臺灣":"")).toLowerCase().includes(wf.q)) return false;
     for(const k of wf.colors) if(!c.flagColors.includes(k)) return false;
     for(const k of wf.syms) if(!c.flagSymbols.includes(k)) return false;
     return true; });
@@ -432,7 +432,7 @@ function renderDetail(){
       <p class="intro">${esc(c.intro)}</p>
       <div class="feats">${(c.features||[]).map(f=>`<span>${esc(f)}</span>`).join('')}</div>
       <div class="locrow"><svg class="globe" id="globe" viewBox="0 0 220 220"></svg>
-        <div class="dirbox">📍 ${esc(c.zh)}${direction(c)}${c.id==="tw"?"":`，<br>直線距離大約 <b>${(Math.round(c.dist/100)*100).toLocaleString()} 公里</b>（約 ${Math.max(1,Math.round(c.dist/400))} 個台灣南北那麼長）`}<br>面積${ar.cmp}${c.landlocked?"<br>🏞️ 這是一個不靠海的「內陸國」":""}<br><small style="color:var(--ink-3)">可以拖曳地球轉轉看（藍點是台灣）</small></div></div>
+        <div class="dirbox">📍 ${esc(c.zh)}${direction(c)}${c.id==="tw"?"":`，<br>直線距離大約 <b>${(Math.round(c.dist/100)*100).toLocaleString()} 公里</b>（約 ${Math.max(1,Math.round(c.dist/400))} 個中華民國南北那麼長）`}<br>面積${ar.cmp}${c.landlocked?"<br>🏞️ 這是一個不靠海的「內陸國」":""}<br><small style="color:var(--ink-3)">可以拖曳地球轉轉看（藍點是中華民國）</small></div></div>
     </div>
   </div>
   ${people?`<div class="sec-h">⭐ ${esc(c.zh)}的<span>著名人物</span></div><div class="people">${people}</div>`:""}
